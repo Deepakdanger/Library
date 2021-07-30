@@ -14,18 +14,29 @@
     <title>Library</title>
 </head>
 <body>
+    <h2>Library</h2>
+    <div class="book_list" id="book_list">
+    </div>
 
-    <form action="/action_page.php">
+    <form id="forms">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" placeholder="Enter Book Name"><br>
+
         <label for="author">Author:</label><br>
         <input type="text" id="author" name="author" placeholder="Enter Author Name"><br>
-        <label for="author">No. Of Pages:</label><br>
-        <input type="text" id="pages" name="pages" placeholder="No. Of Pages"><br><br>
-        <input type="submit" value="Submit">
+
+        <label for="pages">No. Of Pages:</label><br>
+        <input type="text" id="pages" name="pages" placeholder="No. Of Pages"><br>
+
+        <input type="radio" id="readen" name="read">
+        <label for="readen">Readen</label><br>
+        <input type="radio" id="unread" name="read">
+        <label for="unread">Unread</label><br><br>
+
+        <button type="submit">Submit</button>
     </form> 
 
-<input type="text" id="book" data-attr/>
+
     <script src="lib.js"></script>    
 </body>
 </html>
