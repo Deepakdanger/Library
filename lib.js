@@ -1,10 +1,14 @@
 let myLibrary = [];
 //inputElement = document.getElementById('#book').value;
 const books = document.getElementById('book_list');
+
 const form = document.getElementById('forms');
 form.addEventListener('submit', (e) => submitFunction(form, e));
+
 const newBook = document.getElementById('addBook');
 newBook.addEventListener('click', () => classToggle(form));
+
+const readToggle = document.getElementById('readen');
 
 function Book(name, author, pages, read) {
     this.name = name;
@@ -30,16 +34,37 @@ function submitFunction(form, e) {
 }
 
 function displayLibrary(myLibrary) {  
-    const para = document.createElement("div");
-    const currentDiv  = document.getElementById("book_list");
-    let currentTable =myLibrary[myLibrary.length-1];
-    para.innerHTML= `${currentTable.name} ${currentTable.author}
-    ${currentTable.pages}
-    ${currentTable.read}    
-    `;
-    document.body.insertBefore(para, currentDiv);
+    books.innerHTML = '';
+    for (let i = 0; i < myLibrary.length; i++) {
+        const para = document.createElement("div");
+        // const deleteBook = document.createElement("BUTTON");
+        // deleteBook.innerHTML = "Delete";
+        //deleteBook.onclick = deletethisBook(i,myLibrary);
+        const currentDiv  = document.getElementById("book_list");
+        let currentTable = myLibrary[i];
+        para.innerHTML= `${currentTable.name} ${currentTable.author}
+        ${currentTable.pages}
+        ${currentTable.read} <button onclick = deletethisBook(${i},myLibrary)> Delete </button>
+        <button onclick = changeStatus(${i},myLibrary)> Change Status</button>
+        `;
+        // para.appendChild(deleteBook); 
+        // const delete1 = para.lastChild;
+        // console.log(delete1);
+        currentDiv.appendChild(para);
+    }
+    
 } 
 
 function classToggle(form) {
     form.style.visibility = 'visible';
+}
+
+function deletethisBook(i, myLibrary) {
+    myLibrary.splice(i,1);
+    displayLibrary(myLibrary);
+}
+
+function changeStatus(i, myLibrary) {
+    myLibrary[i].read = !myLibrary[i].read;
+    displayLibrary(myLibrary);
 }
