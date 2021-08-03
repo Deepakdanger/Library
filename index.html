@@ -15,12 +15,12 @@
 </head>
 <body>
     <h2>Library</h2>
-    <div class="book_list" id="book_list">
-    </div>
+    <button id="addBook" type="submit" class="btn btn-primary">New Book</button>
+    
 
-    <form id="forms">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" placeholder="Enter Book Name"><br>
+    <form id="forms"  style="visibility: hidden;">
+        <label for="name1">Name:</label><br>
+        <input type="text" id="name1" name="name1" placeholder="Enter Book Name"><br>
 
         <label for="author">Author:</label><br>
         <input type="text" id="author" name="author" placeholder="Enter Author Name"><br>
@@ -28,14 +28,13 @@
         <label for="pages">No. Of Pages:</label><br>
         <input type="text" id="pages" name="pages" placeholder="No. Of Pages"><br>
 
-        <input type="radio" id="readen" name="read">
+        <input type="radio" id="read1" name="read1">
         <label for="readen">Readen</label><br>
-        <input type="radio" id="unread" name="read">
-        <label for="unread">Unread</label><br><br>
 
         <button type="submit">Submit</button>
     </form> 
-
+    <div class="book_list" id="book_list">
+    </div>
 
     <script src="lib.js"></script>    
 </body>
