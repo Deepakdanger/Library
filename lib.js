@@ -1,4 +1,4 @@
-/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 const myLibrary = [];
 const books = document.getElementById('book_list');
 
@@ -14,14 +14,11 @@ function Book(name, author, pages, read) {
   this.read = read;
 }
 
-function deletethisBook(i, myLibrary) {
-  myLibrary.splice(i, 1);
-  displayLibrary(myLibrary);
-}
-
-function changeStatus(i, myLibrary) {
-  myLibrary[i].read = !myLibrary[i].read;
-  displayLibrary(myLibrary);
+function touched(condition1) {
+  if (condition1 === true) {
+    return 'Alredy_Touched';
+  }
+  return 'Not_Touched_Yet';
 }
 
 function displayLibrary(myLibrary) {
@@ -30,13 +27,23 @@ function displayLibrary(myLibrary) {
     const para = document.createElement('div');
     const currentDiv = document.getElementById('book_list');
     const currentTable = myLibrary[i];
-    para.innerHTML = `${currentTable.name} ${currentTable.author}
-          ${currentTable.pages}
-          ${currentTable.read} <button onclick = ${deletethisBook(i, myLibrary)}> Delete </button>
-          <button onclick = ${changeStatus(i, myLibrary)}> Change Status</button>
+    para.innerHTML = `Book${(i + 1)}:- 'Name:' ${currentTable.name}  'Author:'${currentTable.author}
+    'No.of Pages:'${currentTable.pages}
+    ${touched(currentTable.read)} <button onclick = changeStatus(${i},myLibrary)> Change Status</button>  
+    <button onclick = deletethisBook(${i},myLibrary)> Delete </button>
+          
           `;
     currentDiv.appendChild(para);
   }
+}
+function deletethisBook(i, myLibrary) {
+  myLibrary.splice(i, 1);
+  displayLibrary(myLibrary);
+}
+
+function changeStatus(i, myLibrary) {
+  myLibrary[i].read = !myLibrary[i].read;
+  displayLibrary(myLibrary);
 }
 
 function addBookToLibrary(name, author, pages, read) {
@@ -56,7 +63,6 @@ function submitFunction(form, e, read1) {
   const [name, author, pages] = bookInfo;
   addBookToLibrary(name, author, pages, bookRead);
   form.reset();
-  classToggle(form);
 }
 
 form.addEventListener('submit', (e) => submitFunction(form, e, read1));
